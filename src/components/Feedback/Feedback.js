@@ -1,26 +1,26 @@
 import { Component } from 'react';
+import FeedbackOptions from '../FeedbackOptions/FeedbackOptions';
 
-
-class CountFeedback extends Component {
+class Feedback extends Component {
   state = {
     good: 0,
     neutral: 0,
     bad: 0
   }
 
-  goodClick = () => {
+  onClickGood = () => {
     this.setState(prevState => ({
       good: prevState.good + 1,
     }));
   }
 
-  neutralClick = () => {
+  onClickNeutral = () => {
     this.setState(prevState => ({
-        neutral: prevState.neutral + 1,
+      neutral: prevState.neutral + 1,
     }));
   }
 
-  badClick = () => {
+  onClickBad = () => {
     this.setState(prevState => ({
       bad: prevState.bad + 1,
     }));
@@ -29,13 +29,12 @@ class CountFeedback extends Component {
   render() {
     return (
       <>
-        <div className="">
-          <h1 className="">Please leave feedback</h1>
-          <button type="button" onClick={this.goodClick} className="">Good</button>
-          <button type="button" onClick={this.neutralClick} className="">Neutral</button>
-          <button type="button" onClick={this.badClick} className="">Bad</button>
-        </div>
-        <div className="">
+        <FeedbackOptions
+          onClickGood={this.onClickGood}
+          onClickNeutral={this.onClickNeutral}
+          onClickBad={this.onClickBad}
+        />
+        <div className="statistic__result">
           <h1 className="">Statistics</h1>
           <span className="">Good: {this.state.good}</span>
           <span className="">Neutral: {this.state.neutral}</span>
@@ -46,4 +45,4 @@ class CountFeedback extends Component {
   }
 }
 
-export default CountFeedback;
+export default Feedback;

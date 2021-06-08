@@ -1,12 +1,12 @@
 import React from 'react';
-import CountFeedback from './components/CountFeedback';
+import Feedback from './components/Feedback/Feedback';
 
 import "./App.css";
 
 const App = () => {
   return (
     <>
-      <CountFeedback/>
+      <Feedback />
     </>
   );
 };
