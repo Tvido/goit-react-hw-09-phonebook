@@ -66,15 +66,17 @@ class Feedback extends Component {
 
         {/* <Statistics good={} neutral={} bad={} total={} positivePercentage={}></Statistics> */}
 
-        <div className="statistic__result">
+        <div className="">
           <h1 className="">Statistics</h1>
-          <span className="">Good: {good}</span>
-          <span className="">Neutral: {neutral}</span>
-          <span className="">Bad: {bad}</span>
-          <span className="">Total: {this.countTotalFeedback()}</span>
-          <span className="">
-            Positive percentage: {this.countPositivePercentage()}%
-          </span>
+          <ul>
+            <li className="">Good: {good}</li>
+            <li className="">Neutral: {neutral}</li>
+            <li className="">Bad: {bad}</li>
+            <li className="">Total: {this.countTotalFeedback()}</li>
+            <li className="">
+              Positive percentage: {this.countPositivePercentage()}%
+            </li>
+          </ul>
         </div>
       </>
     );
