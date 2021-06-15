@@ -20,6 +20,8 @@
 }
 
 .contacts__form-button {
+  margin: 5px;
+  padding: 5px;
   cursor: pointer;
   width: 100%;
   text-align: center;

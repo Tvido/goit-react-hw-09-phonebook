@@ -32,6 +32,8 @@
 }
 
 .contacts__list-button {
+  margin: 5px;
+  padding: 5px;
   cursor: pointer;
   border-radius: 5px;
   border: 1px solid rgb(209, 209, 209);
