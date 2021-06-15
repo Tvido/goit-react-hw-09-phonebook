@@ -1,10 +1,12 @@
 import { Component } from 'react';
+
 import ContactsList from './components/ContactsList';
 import ContactsForm from './components/ContactsForm';
 import Filter from './components/Filter';
 
 import InitialContacts from './components/ContactsList/contacts.json';
-// import shortid from 'shortid';
+
+import './App.css';
 
 class App extends Component {
   state = {
@@ -48,8 +50,10 @@ class App extends Component {
 
     return (
       <>
+        <h1>Phonebook</h1>
         <ContactsForm onSubmit={this.addContact} />
 
+        <h2>Contacts</h2>
         <Filter value={filter} onChange={this.changeFilter} />
 
         <ContactsList

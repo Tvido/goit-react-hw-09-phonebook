@@ -1,5 +1,8 @@
 import { Component } from 'react';
+
 import shortid from 'shortid';
+
+import './ContactsForm.css';
 
 class ContactsForm extends Component {
   state = {
@@ -34,7 +37,6 @@ class ContactsForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    // this.props.onSubmit({ ...this.state });
     this.props.onSubmit(this.state);
 
     this.setState({ name: '', number: '' });
@@ -42,10 +44,11 @@ class ContactsForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label className="" id={this.contactUniqueId}>
+      <form className="" onSubmit={this.handleSubmit}>
+        <label className="contacts__form-item" id={this.contactUniqueId}>
           Name
           <input
+            className="contacts__form-text"
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -56,9 +59,10 @@ class ContactsForm extends Component {
           />
         </label>
 
-        <label className="" id={this.contactUniqueId}>
+        <label className="contacts__form-item" id={this.contactUniqueId}>
           Number
           <input
+            className="contacts__form-text"
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -68,7 +72,7 @@ class ContactsForm extends Component {
             required
           />
         </label>
-        <button className="" type="submit">
+        <button className="contacts__form-button" type="submit">
           Add contact
         </button>
       </form>
