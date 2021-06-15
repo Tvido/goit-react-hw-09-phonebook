@@ -5,11 +5,6 @@ import ContactsForm from './components/ContactsForm';
 import InitialContacts from './components/ContactsList/contacts.json';
 
 class App extends Component {
-  // state = {
-  //   contacts: [],
-  //   name: '',
-  // };
-
   state = {
     contacts: InitialContacts,
     filter: '',
@@ -23,12 +18,21 @@ class App extends Component {
     }));
   };
 
+  handleInputChange = event => {
+    const { name, value } = event.currentTarget;
+
+    this.setState({
+      [name]: value,
+    });
+  };
+
   render() {
     const { contacts } = this.state;
 
     return (
       <>
         <ContactsForm />
+
         <ContactsList
           contacts={contacts}
           onDeleteContact={this.deleteContact}
