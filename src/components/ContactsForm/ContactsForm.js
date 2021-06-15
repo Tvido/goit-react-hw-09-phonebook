@@ -3,6 +3,7 @@ import shortid from 'shortid';
 
 class ContactsForm extends Component {
   state = {
+    contacts: [],
     name: '',
     number: '',
   };
@@ -20,7 +21,8 @@ class ContactsForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    this.props.onSubmit(this.state);
+    // this.props.onSubmit({ ...this.state });
+    this.props.onSubmit(this.state.event);
 
     this.setState({ name: '', number: '' });
   };

@@ -1,9 +1,10 @@
-import { Component } from 'react';
+import React from 'react';
 
-class Form extends Component {
-  render() {
-    return console.log('Filter');
-  }
-}
+const Filter = ({ value, onChange }) => (
+  <label>
+    Find contacts by name
+    <input type="text" value={value} onChange={onChange}></input>
+  </label>
+);
 
-export default Form;
+export default Filter;
