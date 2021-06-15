@@ -1,12 +1,13 @@
 import { Component } from 'react';
+import shortid from 'shortid';
 
 class ContactsForm extends Component {
   state = {
-    // contacts: InitialContacts,
-    filter: '',
     name: '',
     number: '',
   };
+
+  contactUniqueId = shortid.generate();
 
   handleInputChange = event => {
     const { name, value } = event.currentTarget;
@@ -16,12 +17,21 @@ class ContactsForm extends Component {
     });
   };
 
+  handleSubmit = event => {
+    event.preventDefault();
+
+    this.props.onSubmit(this.state);
+
+    this.setState({ name: '', number: '' });
+  };
+
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <label className="">
           Name
           <input
+            id={this.contactUniqueId}
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -35,6 +45,7 @@ class ContactsForm extends Component {
         <label className="">
           Number
           <input
+            id={this.contactUniqueId}
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

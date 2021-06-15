@@ -8,8 +8,8 @@ class App extends Component {
   state = {
     contacts: InitialContacts,
     filter: '',
-    name: '',
-    number: '',
+    // name: '',
+    // number: '',
   };
 
   deleteContact = contactId => {
@@ -18,12 +18,8 @@ class App extends Component {
     }));
   };
 
-  handleInputChange = event => {
-    const { name, value } = event.currentTarget;
-
-    this.setState({
-      [name]: value,
-    });
+  handleFormSubmit = data => {
+    console.log(data);
   };
 
   render() {
@@ -31,7 +27,7 @@ class App extends Component {
 
     return (
       <>
-        <ContactsForm />
+        <ContactsForm onSubmit={this.handleFormSubmit} />
 
         <ContactsList
           contacts={contacts}
