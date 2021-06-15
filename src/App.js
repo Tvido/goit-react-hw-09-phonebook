@@ -4,7 +4,7 @@ import ContactsForm from './components/ContactsForm';
 import Filter from './components/Filter';
 
 import InitialContacts from './components/ContactsList/contacts.json';
-import shortid from 'shortid';
+// import shortid from 'shortid';
 
 class App extends Component {
   state = {
@@ -12,16 +12,15 @@ class App extends Component {
     filter: '',
   };
 
-  addContact = (name, number) => {
-    const contact = {
-      id: shortid.generate(),
-      name,
-      number,
-    };
+  addContact = contact => {
+    const { contacts } = this.state;
+    const uniqueNames = contacts.map(contact => contact.name);
 
-    this.setState(({ contacts }) => ({
-      contacts: [contact, ...contacts],
-    }));
+    uniqueNames.includes(contact.name)
+      ? alert(`${contact.name} is already in contacts.`)
+      : this.setState(prevState => ({
+          contacts: [contact, ...prevState.contacts],
+        }));
   };
 
   deleteContact = contactId => {
@@ -40,12 +39,12 @@ class App extends Component {
     const normalizedFilter = filter.toLowerCase();
 
     return contacts.filter(contact =>
-      contact.text.toLowerCase().includes(normalizedFilter),
+      contact.name.toLowerCase().includes(normalizedFilter),
     );
   };
 
   render() {
-    const { contacts, filter } = this.state;
+    const { filter } = this.state;
 
     return (
       <>
@@ -54,7 +53,7 @@ class App extends Component {
         <Filter value={filter} onChange={this.changeFilter} />
 
         <ContactsList
-          contacts={contacts}
+          contacts={this.getVisibleContacts()}
           onDeleteContact={this.deleteContact}
         />
       </>

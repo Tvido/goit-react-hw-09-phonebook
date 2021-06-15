@@ -10,11 +10,24 @@ class ContactsForm extends Component {
 
   contactUniqueId = shortid.generate();
 
+  addContact = (name, number) => {
+    const contact = {
+      id: shortid.generate(),
+      name,
+      number,
+    };
+
+    this.setState(prevState => ({
+      contacts: [contact, ...prevState.contacts],
+    }));
+  };
+
   handleInputChange = event => {
     const { name, value } = event.currentTarget;
 
     this.setState({
       [name]: value,
+      id: shortid.generate(),
     });
   };
 
@@ -22,7 +35,7 @@ class ContactsForm extends Component {
     event.preventDefault();
 
     // this.props.onSubmit({ ...this.state });
-    this.props.onSubmit(this.state.event);
+    this.props.onSubmit(this.state);
 
     this.setState({ name: '', number: '' });
   };
@@ -30,10 +43,9 @@ class ContactsForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label className="">
+        <label className="" id={this.contactUniqueId}>
           Name
           <input
-            id={this.contactUniqueId}
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -44,10 +56,9 @@ class ContactsForm extends Component {
           />
         </label>
 
-        <label className="">
+        <label className="" id={this.contactUniqueId}>
           Number
           <input
-            id={this.contactUniqueId}
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
