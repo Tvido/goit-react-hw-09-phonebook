@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import { connect } from 'react-redux';
+import contactsActions from '../../redux/contacts/contacts-actions';
 
 import shortid from 'shortid';
 
@@ -79,4 +81,9 @@ class ContactsForm extends Component {
     );
   }
 }
-export default ContactsForm;
+
+const mapDaspatchToProps = dispatch => ({
+  onSubmit: text => dispatch(contactsActions.addContact(text)),
+});
+
+export default connect(null, mapDaspatchToProps)(ContactsForm);
