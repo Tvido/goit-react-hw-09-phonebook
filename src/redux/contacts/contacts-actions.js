@@ -5,4 +5,9 @@ const addContact = ({ name }) => ({
   payload: name,
 });
 
-export default { addContact };
+const deleteContact = ({ id }) => ({
+  type: types.DELETE,
+  payload: id,
+});
+
+export default { addContact, deleteContact };

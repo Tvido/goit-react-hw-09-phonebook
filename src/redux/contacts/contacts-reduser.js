@@ -13,6 +13,9 @@ const items = (state = [], { type, payload }) => {
     case types.ADD:
       return [payload, ...state];
 
+    case types.DELETE:
+      return state.filter(({ id }) => id !== payload);
+
     default:
       return state;
   }

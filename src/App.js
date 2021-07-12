@@ -40,11 +40,11 @@ class App extends Component {
   //       }));
   // };
 
-  deleteContact = contactId => {
-    this.setState(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
-    }));
-  };
+  // deleteContact = contactId => {
+  //   this.setState(prevState => ({
+  //     contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+  //   }));
+  // };
 
   changeFilter = event => {
     this.setState({ filter: event.currentTarget.value });
@@ -66,16 +66,15 @@ class App extends Component {
     return (
       <>
         <h1>Phonebook</h1>
-        {/* <ContactsForm onSubmit={this.addContact} /> */}
         <ContactsForm />
 
         <h2>Contacts</h2>
         {/* <Filter value={filter} onChange={this.changeFilter} /> */}
 
-        {/* <ContactsList
-          contacts={this.getVisibleContacts()}
-          onDeleteContact={this.deleteContact}
-        /> */}
+        <ContactsList
+        // contacts={this.getVisibleContacts()}
+        // onDeleteContact={this.deleteContact}
+        />
       </>
     );
   }
