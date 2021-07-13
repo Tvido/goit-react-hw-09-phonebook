@@ -5,9 +5,14 @@ const addContact = ({ name }) => ({
   payload: name,
 });
 
-const deleteContact = ({ id }) => ({
+const deleteContact = ({ contactId }) => ({
   type: types.DELETE,
-  payload: id,
+  payload: contactId,
 });
 
-export default { addContact, deleteContact };
+const changeFilter = event => ({
+  type: types.CHANGE_FILTER,
+  payload: event,
+});
+
+export default { addContact, deleteContact, changeFilter };
