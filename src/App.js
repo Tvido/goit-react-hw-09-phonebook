@@ -46,9 +46,9 @@ class App extends Component {
   //   }));
   // };
 
-  changeFilter = event => {
-    this.setState({ filter: event.currentTarget.value });
-  };
+  // changeFilter = event => {
+  //   this.setState({ filter: event.currentTarget.value });
+  // };
 
   // getVisibleContacts = () => {
   //   const { contacts, filter } = this.state;
@@ -69,12 +69,9 @@ class App extends Component {
         <ContactsForm />
 
         <h2>Contacts</h2>
-        {/* <Filter value={filter} onChange={this.changeFilter} /> */}
+        <Filter />
 
-        <ContactsList
-        // contacts={this.getVisibleContacts()}
-        // onDeleteContact={this.deleteContact}
-        />
+        <ContactsList />
       </>
     );
   }
