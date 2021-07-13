@@ -1,13 +1,18 @@
 import types from './contacts-types';
+import shortid from 'shortid';
 
-const addContact = ({ name }) => ({
+const addContact = ({ name, number }) => ({
   type: types.ADD,
-  payload: name,
+  payload: {
+    id: shortid.generate(),
+    name,
+    number,
+  },
 });
 
-const deleteContact = ({ contactId }) => ({
+const deleteContact = ({ id }) => ({
   type: types.DELETE,
-  payload: contactId,
+  payload: id,
 });
 
 const changeFilter = event => ({

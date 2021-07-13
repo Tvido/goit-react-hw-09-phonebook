@@ -28,10 +28,10 @@ ContactsList.propTypes = {
   onDeleteContact: PropTypes.func.isRequired,
 };
 
-const getVisibleContacts = (allContacts, filter) => {
+const getVisibleContacts = (items, filter) => {
   const normalizedFilter = filter.toLowerCase();
 
-  return allContacts.filter(contact =>
+  return items.filter(contact =>
     contact.name.toLowerCase().includes(normalizedFilter),
   );
 };
