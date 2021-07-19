@@ -32,4 +32,4 @@ const filter = createReducer('', {
   [changeFilter]: (_, { payload }) => payload,
 });
 
-export default combineReducers({ items, filter });
+export default combineReducers({ items, filter, loading });
