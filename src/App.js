@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { contactsOperations } from './redux/contacts';
-import { getLoading } from './redux/contacts/contacts-selectors';
+// import { getLoading } from './redux/contacts/contacts-selectors';
 import ContactsList from './components/ContactsList';
 import ContactsForm from './components/ContactsForm';
 import Filter from './components/Filter';
