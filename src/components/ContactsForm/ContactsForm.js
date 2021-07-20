@@ -8,7 +8,7 @@ import './ContactsForm.css';
 
 class ContactsForm extends Component {
   state = {
-    contacts: [],
+    // contacts: [],
     name: '',
     number: '',
   };
@@ -83,7 +83,8 @@ class ContactsForm extends Component {
 }
 
 const mapDaspatchToProps = dispatch => ({
-  onSubmit: contact => dispatch(contactsOperations.addContact(contact)),
+  onSubmit: ({ name, number }) =>
+    dispatch(contactsOperations.addContact({ name, number })),
 });
 
 export default connect(null, mapDaspatchToProps)(ContactsForm);
