@@ -21,7 +21,7 @@ class ContactsView extends Component {
         <h2 className="contactsView__title">Contacts</h2>
         <Filter />
         {this.props.isLoadingContacts && (
-          <h1 className="contactsView__title">Loading</h1>
+          <h1 className="contactsView__loading-title">Loading...</h1>
         )}
         <ContactList />
       </div>
