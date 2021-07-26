@@ -1,15 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import * as contactsActions from '../../redux/contacts/contacts-actions';
+import { filterContacts } from '../../redux/contacts';
+import { getFilter } from '../../redux/contacts/contacts-selectors';
 
 import './Filter.css';
 
 const Filter = ({ value, onChange }) => (
-  <label className="filter">
-    Find contacts by name
-    <input type="text" value={value} onChange={onChange}></input>
-  </label>
+  <div>
+    <label className="filter">
+      Find contacts by name
+      <input className="" type="text" value={value} onChange={onChange} />
+    </label>
+  </div>
 );
 
 Filter.propTypes = {
@@ -18,12 +21,11 @@ Filter.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  value: state.contacts.filter,
+  value: getFilter(state),
 });
 
-const mapDaspatchToProps = dispatch => ({
-  onChange: event =>
-    dispatch(contactsActions.filterContacts(event.target.value)),
+const mapDispatchToProps = dispatch => ({
+  onChange: e => dispatch(filterContacts(e.target.value)),
 });
 
-export default connect(mapStateToProps, mapDaspatchToProps)(Filter);
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

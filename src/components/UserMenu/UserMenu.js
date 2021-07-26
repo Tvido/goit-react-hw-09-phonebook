@@ -2,10 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { authSelectors, authOperations } from '../../redux/auth';
 
+import './UserMenu.css';
+
 const UserMenu = ({ email, onLogout }) => (
-  <div>
-    <p>{email}</p>
-    <button type="button" onClick={onLogout}>
+  <div className="userMenu__container">
+    <p className="userMenu__email">{email}</p>
+    <button className="userMenu__button" type="button" onClick={onLogout}>
       Logout
     </button>
   </div>

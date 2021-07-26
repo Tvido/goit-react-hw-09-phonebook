@@ -1,0 +1,11 @@
+.authNav__link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 8px;
+  font-weight: 700;
+  color: rgb(128, 102, 102);
+}
+
+.authNav__activeLink {
+  color: #37a1d3;
+}
