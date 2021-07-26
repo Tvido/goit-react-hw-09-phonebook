@@ -1,0 +1,12 @@
+.homeView__container {
+  margin: 150px auto;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.homeView__title {
+  font-weight: 700;
+  font-size: 48px;
+  text-align: center;
+}

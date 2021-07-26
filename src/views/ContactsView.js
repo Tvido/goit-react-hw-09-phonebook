@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ContactForm from '../components/ContactsForm';
-import ContactList from '../components/ContactsList';
+import ContactForm from '../components/ContactForm';
+import ContactList from '../components/ContactList';
 import Filter from '../components/Filter';
 import { contactsOperations } from '../redux/contacts';
 import { getLoading } from '../redux/contacts/contacts-selectors';
+
+import './ContactsView.css';
 
 class ContactsView extends Component {
   componentDidMount() {
@@ -13,12 +15,14 @@ class ContactsView extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <div className="contactsView__container">
+        <h1 className="contactsView__title">Phonebook</h1>
         <ContactForm onSubmit={this.formSubmitHandler} />
-        <h2>Contacts</h2>
+        <h2 className="contactsView__title">Contacts</h2>
         <Filter />
-        {this.props.isLoadingContacts && <h1>Loading</h1>}
+        {this.props.isLoadingContacts && (
+          <h1 className="contactsView__title">Loading</h1>
+        )}
         <ContactList />
       </div>
     );

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authOperations } from '../redux/auth';
 
+import './RegisterView.css';
+
 class RegisterView extends Component {
   state = {
     name: '',
@@ -26,12 +28,17 @@ class RegisterView extends Component {
 
     return (
       <div>
-        <h1>Registration Page</h1>
+        <h1 className="loginView__title">Registration Page</h1>
 
-        <form onSubmit={this.handleSubmit} autoComplete="off">
-          <label>
+        <form
+          className="loginView__form"
+          onSubmit={this.handleSubmit}
+          autoComplete="off"
+        >
+          <label className="loginView__form__label">
             Name:
             <input
+              className="loginView__form__input"
               type="text"
               name="name"
               value={name}
@@ -39,9 +46,10 @@ class RegisterView extends Component {
             />
           </label>
 
-          <label>
+          <label className="loginView__form__label">
             Email:
             <input
+              className="loginView__form__input"
               type="email"
               name="email"
               value={email}
@@ -49,9 +57,10 @@ class RegisterView extends Component {
             />
           </label>
 
-          <label>
+          <label className="loginView__form__label">
             Password:
             <input
+              className="loginView__form__input"
               type="password"
               name="password"
               value={password}
@@ -59,7 +68,9 @@ class RegisterView extends Component {
             />
           </label>
 
-          <button type="submit">Register</button>
+          <button className="loginView__button" type="submit">
+            Register
+          </button>
         </form>
       </div>
     );
@@ -69,5 +80,9 @@ class RegisterView extends Component {
 const mapDispatchToProps = {
   onRegister: authOperations.register,
 };
+
+// const mapDispatchToProps = dispatch =>({
+//   onRegister: (data) => dispatch(authOperations.register(data))
+// })
 
 export default connect(null, mapDispatchToProps)(RegisterView);

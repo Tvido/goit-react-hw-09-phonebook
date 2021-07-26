@@ -1,13 +1,10 @@
 import React from 'react';
 
+import './HomeView.css';
+
 const HomeView = () => (
-  <div>
-    <h1>
-      It`s a Home Page. Welcome!
-      <span role="img" aria-label="Иконка приветствия">
-        💁‍♀️
-      </span>
-    </h1>
+  <div className="homeView__container">
+    <h1 className="homeView__title">WELCOME!!!</h1>
   </div>
 );
 
