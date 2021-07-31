@@ -13,7 +13,7 @@ const HomeView = lazy(() => import('./views/HomeView'));
 const RegisterView = lazy(() => import('./views/RegisterView'));
 const LoginView = lazy(() => import('./views/LoginView'));
 const ContactsView = lazy(() => import('./views/ContactsView'));
-const NotFoundView = lazy(() => import('./views/NotFoundView'));
+// const NotFoundView = lazy(() => import('./views/NotFoundView'));
 
 class App extends Component {
   componentDidMount() {
@@ -45,7 +45,7 @@ class App extends Component {
               component={ContactsView}
               redirectTo="/login"
             />
-            <PublicRoute component={NotFoundView} />
+            {/* <PublicRoute component={NotFoundView} /> */}
           </Switch>
         </Suspense>
       </Container>

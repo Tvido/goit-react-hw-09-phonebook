@@ -81,8 +81,4 @@ const mapDispatchToProps = {
   onRegister: authOperations.register,
 };
 
-// const mapDispatchToProps = dispatch =>({
-//   onRegister: (data) => dispatch(authOperations.register(data))
-// })
-
 export default connect(null, mapDispatchToProps)(RegisterView);
