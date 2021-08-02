@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { authOperations } from '../redux/auth';
+// import { useDispatch } from 'react-redux';
+// import { authOperations } from '../redux/auth';
 
 import './RegisterView.css';
 
-export default function RegisterView() {
+export default function RegisterView({ onSubmit }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -33,16 +33,24 @@ export default function RegisterView() {
   const handleSubmit = event => {
     event.preventDefault();
 
-    dispatch(
-      authOperations({
-        name,
-        email,
-        password,
-      }),
-    );
+    onSubmit({ name, email, password });
 
     reset();
   };
+
+  // const handleSubmit = event => {
+  //   event.preventDefault();
+
+  //   dispatch(
+  //     authOperations({
+  //       name,
+  //       email,
+  //       password,
+  //     }),
+  //   );
+
+  //   reset();
+  // };
 
   const reset = () => {
     setName('');
