@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-// import { connect } from 'react-redux';
-// import { authOperations } from '../redux/auth';
+import { useDispatch } from 'react-redux';
+import { authOperations } from '../redux/auth';
 
 import './RegisterView.css';
 
@@ -9,21 +9,44 @@ export default function RegisterView() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const updateName = event => {
-    setName(event.target.value);
-  };
+  const dispatch = useDispatch();
 
-  const updateEmail = event => {
-    setEmail(event.target.value);
-  };
+  const handleChange = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
 
-  const updatePassword = event => {
-    setPassword(event.target.value);
+      case 'email':
+        setEmail(value);
+        break;
+
+      case 'password':
+        setPassword(value);
+        break;
+
+      default:
+        return;
+    }
   };
 
   const handleSubmit = event => {
     event.preventDefault();
 
+    console.log(email, password);
+
+    dispatch(
+      authOperations({
+        name,
+        email,
+        password,
+      }),
+    );
+
+    reset();
+  };
+
+  const reset = () => {
     setName('');
     setEmail('');
     setPassword('');
@@ -31,47 +54,47 @@ export default function RegisterView() {
 
   return (
     <div>
-      <h1 className="loginView__title">Registration Page</h1>
+      <h1 className="registerView__title">Registration Page</h1>
 
       <form
-        className="loginView__form"
+        className="registerView__form"
         onSubmit={handleSubmit}
         autoComplete="off"
       >
-        <label className="loginView__form__label">
+        <label className="registerView__form__label">
           Name:
           <input
-            className="loginView__form__input"
+            className="registerView__form__input"
             type="text"
             name="name"
             value={name}
-            onChange={updateName}
+            onChange={handleChange}
           />
         </label>
 
-        <label className="loginView__form__label">
+        <label className="registerView__form__label">
           Email:
           <input
-            className="loginView__form__input"
+            className="registerView__form__input"
             type="email"
             name="email"
             value={email}
-            onChange={updateEmail}
+            onChange={handleChange}
           />
         </label>
 
-        <label className="loginView__form__label">
+        <label className="registerView__form__label">
           Password:
           <input
-            className="loginView__form__input"
+            className="registerView__form__input"
             type="password"
             name="password"
             value={password}
-            onChange={updatePassword}
+            onChange={handleChange}
           />
         </label>
 
-        <button className="loginView__button" type="submit">
+        <button className="registerView__button" type="submit">
           Register
         </button>
       </form>
