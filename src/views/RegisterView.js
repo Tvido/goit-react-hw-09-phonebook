@@ -33,8 +33,6 @@ export default function RegisterView() {
   const handleSubmit = event => {
     event.preventDefault();
 
-    console.log(email, password);
-
     dispatch(
       authOperations({
         name,
