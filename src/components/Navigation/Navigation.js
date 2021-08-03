@@ -1,37 +1,66 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import routes from '../routes';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { authSelectors } from '../../redux/auth';
 
 import './Navigation.css';
 
-const Navigation = ({ isAuthenticated }) => (
-  <nav>
-    <NavLink
-      className="navigation__link"
-      activeClassName="navigation__activeLink"
-      to={routes.HomeView}
-      exact
-    >
-      HOME
-    </NavLink>
+export default function Navigation() {
+  const isLoggedIn = useSelector(authSelectors.getIsAuthenticated);
 
-    {isAuthenticated && (
+  return (
+    <nav>
       <NavLink
         className="navigation__link"
         activeClassName="navigation__activeLink"
-        to={routes.ContactsView}
+        to={routes.HomeView}
         exact
       >
-        CONTACTS
+        HOME
       </NavLink>
-    )}
-  </nav>
-);
 
-const mapStateToProps = state => ({
-  isAuthenticated: authSelectors.getIsAuthenticated(state),
-});
+      {isLoggedIn && (
+        <NavLink
+          className="navigation__link"
+          activeClassName="navigation__activeLink"
+          to={routes.ContactsView}
+          exact
+        >
+          CONTACTS
+        </NavLink>
+      )}
+    </nav>
+  );
+}
 
-export default connect(mapStateToProps)(Navigation);
+// const Navigation = ({ isAuthenticated }) => (
+//   <nav>
+//     <NavLink
+//       className="navigation__link"
+//       activeClassName="navigation__activeLink"
+//       to={routes.HomeView}
+//       exact
+//     >
+//       HOME
+//     </NavLink>
+
+//     {isAuthenticated && (
+//       <NavLink
+//         className="navigation__link"
+//         activeClassName="navigation__activeLink"
+//         to={routes.ContactsView}
+//         exact
+//       >
+//         CONTACTS
+//       </NavLink>
+//     )}
+//   </nav>
+// );
+
+// const mapStateToProps = state => ({
+//   isAuthenticated: authSelectors.getIsAuthenticated(state),
+// });
+
+// export default connect(mapStateToProps)(Navigation);
