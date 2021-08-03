@@ -1,72 +1,137 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { authOperations } from '../redux/auth';
 
 import './LoginView.css';
 
-class LoginView extends Component {
-  state = {
-    email: '',
-    password: '',
+export default function LoginView() {
+  const dispatch = useDispatch();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleEmailChange = event => {
+    setEmail(event.target.value);
   };
 
-  handleChange = ({ target: { name, value } }) => {
-    this.setState({ [name]: value });
+  const handlePasswordChange = event => {
+    setPassword(event.target.value);
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = event => {
+    event.preventDefault();
 
-    this.props.onLogin(this.state);
-
-    this.setState({ name: '', email: '', password: '' });
+    dispatch(authOperations.logIn({ email, password }));
   };
 
-  render() {
-    const { email, password } = this.state;
+  return (
+    <div>
+      <h1 className="loginView__title">PLEASE LOGIN</h1>
 
-    return (
-      <div>
-        <h1 className="loginView__title">PLEASE LOGIN</h1>
+      <form
+        className="loginView__form"
+        onSubmit={handleSubmit}
+        autoComplete="off"
+      >
+        <label className="loginView__form__label">
+          Email:
+          <input
+            className="loginView__form__input"
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleEmailChange}
+          />
+        </label>
 
-        <form
-          className="loginView__form"
-          onSubmit={this.handleSubmit}
-          autoComplete="off"
-        >
-          <label className="loginView__form__label">
-            Email:
-            <input
-              className="loginView__form__input"
-              type="email"
-              name="email"
-              value={email}
-              onChange={this.handleChange}
-            />
-          </label>
+        <label className="loginView__form__label">
+          Password:
+          <input
+            className="loginView__form__input"
+            type="password"
+            name="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+        </label>
 
-          <label className="loginView__form__label">
-            Password:
-            <input
-              className="loginView__form__input"
-              type="password"
-              name="password"
-              value={password}
-              onChange={this.handleChange}
-            />
-          </label>
-
-          <button className="loginView__button" type="submit">
-            Login
-          </button>
-        </form>
-      </div>
-    );
-  }
+        <button className="loginView__button" type="submit">
+          Login
+        </button>
+      </form>
+    </div>
+  );
 }
 
-const mapDispatchToProps = {
-  onLogin: authOperations.logIn,
-};
+// const mapDispatchToProps = {
+//   onLogin: authOperations.logIn,
+// };
 
-export default connect(null, mapDispatchToProps)(LoginView);
+// export default connect(null, mapDispatchToProps)(LoginView);
+
+// class LoginView extends Component {
+//   state = {
+//     email: '',
+//     password: '',
+//   };
+
+//   handleChange = ({ target: { name, value } }) => {
+//     this.setState({ [name]: value });
+//   };
+
+//   handleSubmit = e => {
+//     e.preventDefault();
+
+//     this.props.onLogin(this.state);
+
+//     this.setState({ name: '', email: '', password: '' });
+//   };
+
+//   render() {
+//     const { email, password } = this.state;
+
+//     return (
+//       <div>
+//         <h1 className="loginView__title">PLEASE LOGIN</h1>
+
+//         <form
+//           className="loginView__form"
+//           onSubmit={this.handleSubmit}
+//           autoComplete="off"
+//         >
+//           <label className="loginView__form__label">
+//             Email:
+//             <input
+//               className="loginView__form__input"
+//               type="email"
+//               name="email"
+//               value={email}
+//               onChange={this.handleChange}
+//             />
+//           </label>
+
+//           <label className="loginView__form__label">
+//             Password:
+//             <input
+//               className="loginView__form__input"
+//               type="password"
+//               name="password"
+//               value={password}
+//               onChange={this.handleChange}
+//             />
+//           </label>
+
+//           <button className="loginView__button" type="submit">
+//             Login
+//           </button>
+//         </form>
+//       </div>
+//     );
+//   }
+// }
+
+// const mapDispatchToProps = {
+//   onLogin: authOperations.logIn,
+// };
+
+// export default connect(null, mapDispatchToProps)(LoginView);
