@@ -9,7 +9,6 @@ export default function UserMenu() {
   const dispatch = useDispatch();
 
   const email = useSelector(authSelectors.getUsermail);
-  // const onLogout = () => dispatch(authOperations.logOut());
 
   const onLogout = useCallback(
     () => dispatch(authOperations.logOut()),
