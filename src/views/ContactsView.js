@@ -20,7 +20,7 @@ export default function ContactsView() {
   return (
     <div className="contactsView__container">
       <h1 className="contactsView__title">Phonebook</h1>
-      <ContactForm onSubmit={this.formSubmitHandler} />
+      <ContactForm />
       <h2 className="contactsView__title">Contacts</h2>
       <Filter />
       {isLoadingContacts && (
