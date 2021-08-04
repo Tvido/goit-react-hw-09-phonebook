@@ -5,11 +5,11 @@ import { authOperations } from '../redux/auth';
 import './RegisterView.css';
 
 export default function RegisterView() {
+  const dispatch = useDispatch();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const dispatch = useDispatch();
 
   const handleNameChange = event => {
     setName(event.target.value);
@@ -25,7 +25,9 @@ export default function RegisterView() {
 
   const handleSubmit = event => {
     event.preventDefault();
+
     dispatch(authOperations.register({ name, email, password }));
+
     setEmail('');
     setName('');
     setPassword('');
