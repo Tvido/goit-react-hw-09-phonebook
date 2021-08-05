@@ -27,9 +27,9 @@ export default function Filter() {
   );
 }
 
-Filter.propTypes = {
-  onChange: PropTypes.func.isRequired,
-};
+// Filter.propTypes = {
+//   onChange: PropTypes.func.isRequired,
+// };
 
 // const Filter = ({ value, onChange }) => (
 //   <div>
