@@ -33,18 +33,21 @@ const App = () => {
       <Suspense fallback={<p>Loading...</p>}>
         <Switch>
           <PublicRoute exact path="/" component={HomeView} />
+
           <PublicRoute
             path="/register"
             restricted
             component={RegisterView}
             redirectTo="/contacts"
           />
+
           <PublicRoute
             path="/login"
             restricted
             component={LoginView}
             redirectTo="/contacts"
           />
+
           <PrivateRoute
             path="/contacts"
             component={ContactsView}
