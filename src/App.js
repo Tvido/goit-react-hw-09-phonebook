@@ -16,7 +16,7 @@ const LoginView = lazy(() => import('./views/LoginView'));
 const ContactsView = lazy(() => import('./views/ContactsView'));
 // const NotFoundView = lazy(() => import('./views/NotFoundView'));
 
-const App = () => {
+export default function App() {
   const dispatch = useDispatch();
   // componentDidMount() {
   //   this.props.onGetCurrentUser();
@@ -57,9 +57,7 @@ const App = () => {
       </Suspense>
     </Container>
   );
-};
-
-export default App;
+}
 
 // const mapDispatchToProps = {
 //   onGetCurrentUser: authOperations.getCurrentUser,
