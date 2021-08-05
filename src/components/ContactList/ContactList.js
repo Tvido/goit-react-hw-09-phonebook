@@ -35,10 +35,10 @@ export default function ContactList() {
   );
 }
 
-ContactList.propTypes = {
-  contacts: PropTypes.array.isRequired,
-  onDeleteContact: PropTypes.func.isRequired,
-};
+// ContactList.propTypes = {
+//   contacts: PropTypes.array.isRequired,
+//   onDeleteContact: PropTypes.func.isRequired,
+// };
 
 // const mapStateToProps = state => ({
 //   contacts: getVisibleContacts(state),
