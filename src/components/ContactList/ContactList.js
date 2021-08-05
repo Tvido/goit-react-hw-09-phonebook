@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { contactsOperations } from '../../redux/contacts';
 import { getVisibleContacts } from '../../redux/contacts/contacts-selectors';
