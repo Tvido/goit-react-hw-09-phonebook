@@ -7,7 +7,7 @@ import { contactsOperations } from '../../redux/contacts';
 
 import './ContactsForm.css';
 
-const ContactForm = () => {
+export default function ContactForm() {
   const dispatch = useDispatch();
 
   const [name, setName] = useState('');
@@ -76,9 +76,7 @@ const ContactForm = () => {
       </button>
     </form>
   );
-};
-
-export default ContactForm;
+}
 
 // const mapDispatchToProps = dispatch => ({
 //   onSubmit: ({ name, number }) =>
